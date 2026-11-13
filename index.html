@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Secure Vault - Cloud Sync & Media Protection</title>
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Auth Screen (Master Password) -->
+      <div id="auth-screen" class="screen">
+        <div class="auth-card">
+          <h1 id="auth-title">Create Your Cloud Vault</h1>
+          <p id="auth-subtitle" class="subtitle">Set a master password. Syncs across all your devices securely.</p>
+          <form id="auth-form">
+            <input type="password" id="master-password" placeholder="Enter Master Password" required />
+            <button type="submit" id="auth-btn" class="btn-primary">Create Vault</button>
+          </form>
+          <p id="auth-error" class="error-msg hidden"></p>
+        </div>
+      </div>
+
+      <!-- Vault Main Screen -->
+      <div id="vault-screen" class="screen hidden">
+        <header class="vault-header">
+          <h2>🔒 My Secure Vault</h2>
+          <button id="lock-btn" class="btn-outline">Lock Vault</button>
+        </header>
+
+        <main class="vault-container">
+          <!-- Add New Secret / Media Form -->
+          <form id="entry-form" class="entry-grid">
+            <input type="text" id="entry-title" placeholder="Service / Title (e.g., GitHub, ID Photo)" required />
+            <select id="entry-category">
+              <option value="Login">Login / Password</option>
+              <option value="Card">Bank / Card</option>
+              <option value="Note">Secure Note</option>
+              <option value="Media">Photo / Video</option>
+            </select>
+            <input type="text" id="entry-username" placeholder="Username / Email / Account No." />
+            <div class="password-input-group">
+              <input type="text" id="entry-secret" placeholder="Password / PIN / Secret" />
+              <button type="button" id="generate-btn" class="btn-outline">Generate</button>
+            </div>
+            <div class="full-width">
+              <label style="font-size: 0.85rem; color: var(--muted); display: block; margin-bottom: 0.25rem;">Or Attach Photo / Video (Cloud Encrypted):</label>
+              <input type="file" id="entry-file" accept="image/*,video/*" />
+            </div>
+            <button type="submit" class="btn-primary full-width">Encrypt & Sync to Cloud</button>
+          </form>
+
+          <!-- Search & Filter Bar -->
+          <div class="filter-bar">
+            <input type="text" id="search-input" placeholder="Search vault entries..." />
+            <select id="filter-category">
+              <option value="All">All Categories</option>
+              <option value="Login">Login</option>
+              <option value="Card">Card</option>
+              <option value="Note">Note</option>
+              <option value="Media">Media</option>
+            </select>
+          </div>
+
+          <!-- Vault Items List Container -->
+          <div id="vault-list">
+            <!-- Items will be dynamically rendered here -->
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
